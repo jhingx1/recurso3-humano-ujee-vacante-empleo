@@ -23,7 +23,7 @@ public class VacanteDao {
 		String sql = "insert into Vacante values(?,?,?,?,?) ";
 		
 		//para fecha de publicacion
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
 			PreparedStatement ps = conn.getConnection().prepareStatement(sql);
