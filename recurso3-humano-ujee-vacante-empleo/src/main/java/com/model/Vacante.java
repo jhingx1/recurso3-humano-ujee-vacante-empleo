@@ -10,7 +10,8 @@ public class Vacante {
 	private String descripcion;
 	private String detalle;
 	
-	public Vacante(int id) {	
+	public Vacante(int id) {
+		this.fechaPublicacion = new Date();
 		this.id = id;
 	}
 
