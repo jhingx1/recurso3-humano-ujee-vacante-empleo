@@ -26,7 +26,7 @@
         <h3 class="text-muted">My Company</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="#">Inicio</a></li>            
+            <li><a href="homepage">Inicio</a></li>            
             <li><a href="#">Administración</a></li>                        
             <li><a href="#">Acerca</a></li>            
           </ul>

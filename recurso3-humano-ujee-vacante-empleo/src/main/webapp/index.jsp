@@ -26,8 +26,8 @@
         <h3 class="text-muted">Starks</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="#">Inicio</a></li>            
-            <li><a href="#">Administración</a></li>                        
+            <li><a href="homepage">Inicio</a></li>            
+            <li><a href="admin?action=login">Administración</a></li>                        
             <li><a href="#">Acerca</a></li>            
           </ul>
         </nav>
