@@ -169,6 +169,7 @@ public class VacanteDao {
             List<Vacante> list = new LinkedList<Vacante>();
             Vacante vacante;
             while (rs.next()) {
+            	//objetos que se han encontrado en la vista
                 vacante = new Vacante(rs.getInt("id"));
                 vacante.setFechaPublicacion(rs.getDate("fechaPublicacion"));
                 vacante.setNombre(rs.getString("nombre"));

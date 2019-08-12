@@ -34,7 +34,7 @@
       </div>
       
       <!-- Formulario para la busqueda. El formulario es enviado por POST al BusquedaController -->    
-      <form method ="post" action="#" class="navbar-form navbar-right">
+      <form method ="post" action="buscar" class="navbar-form navbar-right">
         <div class="form-group">
           <input type="text" name="query" required placeholder="Buscar oferta..." class="form-control">
         </div>        
