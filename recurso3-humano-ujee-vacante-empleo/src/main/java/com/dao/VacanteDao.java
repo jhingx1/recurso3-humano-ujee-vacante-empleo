@@ -88,7 +88,67 @@ public class VacanteDao {
         }
     }
 	
+    /**
+     * 3. Metodo para buscar en la base de datos un registro de Vacante por
+     * medio del id
+     *
+     * @param idVacante
+     * @return Objeto de tipo vacante. Si no lo encuentra, regresa null
+     * @throws Exception
+     */
+    public Vacante getById(int idVacante){
+        try {
+            String sql = "select * from Vacante where id=? limit 1";
+            PreparedStatement preparedStatement = conn.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, idVacante); // Set idVacante
+            ResultSet rs = preparedStatement.executeQuery();
+            Vacante vacante = new Vacante(0);//para obtener el id
+            while (rs.next()) {
+                // Create an object for the movie
+                vacante.setId(rs.getInt("id"));
+                vacante.setFechaPublicacion(rs.getDate("fechaPublicacion"));
+                vacante.setNombre(rs.getString("nombre"));
+                vacante.setDescripcion(rs.getString("descripcion"));
+                vacante.setDetalle(rs.getString("detalle"));
+            }
+            return vacante;
+
+        } catch (SQLException e) {            
+            System.out.println("Error VacanteDao.getById: " + e.getMessage());
+            return null;
+        }
+    }
 	
+    /**
+     * 4. Metodo que regresa una lista con todas las vacantes.
+     *
+     * @return Lista de todos los objetos de vacantes
+     * @throws Exception
+     */
+    public List<Vacante> getAll(){
+
+        try {
+            String sql = "select * from Vacante order by id desc";
+            PreparedStatement preparedStatement = conn.getConnection().prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            List<Vacante> list = new LinkedList<Vacante>();
+            Vacante vacante;
+            while (rs.next()) {
+                vacante = new Vacante(rs.getInt("id"));
+                vacante.setFechaPublicacion(rs.getDate("fechaPublicacion"));
+                vacante.setNombre(rs.getString("nombre"));
+                vacante.setDescripcion(rs.getString("descripcion"));
+                vacante.setDetalle(rs.getString("detalle"));       
+                // Add vacante object to the list
+                list.add(vacante);
+            }
+            return list;
+
+        } catch (SQLException e) {            
+            System.out.println("Error VacanteDao.getAll: " + e.getMessage());
+            return null;
+        }
+    }
 	
 
 }

@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +19,19 @@ import com.model.Vacante;
 public class VacanteController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Recibimos el parametro de accion, para ver que solicito el cliente.
+        String action = request.getParameter("action");
+        if ("ver".equals(action)) {
+            this.verDetalle(request, response);
+        } else if ("lista".equals(action)) {
+            this.verTodas(request, response);
+        } 
+    }
+	
 	
 	/**
      * 1. Metodo que sirve para guardar una vacante.
@@ -70,5 +84,51 @@ public class VacanteController extends HttpServlet {
         rd.forward(request, response);
 		
 	}
+	
+	/**
+     * 2. Metodo para ver los detalles completos de una Vacante.
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void verDetalle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
+        
+        // Recibimos id de la vacante a consultar
+        int idVacante = Integer.parseInt(request.getParameter("id"));                
+        DbConnection conn = new DbConnection();
+        VacanteDao vacanteDao = new VacanteDao(conn);
+        Vacante vacante = vacanteDao.getById(idVacante);
+        conn.disconnect();        
+        
+        // Compartimos la variable msg, para poder accederla desde la vista con Expression Language
+        request.setAttribute("vacante", vacante);
+        RequestDispatcher rd;
+        
+        // Enviarmos respuesta. Renderizamos la vista detalle.jsp
+        rd = request.getRequestDispatcher("/detalle.jsp");
+        rd.forward(request, response);
+    }
+    
+    /**
+     * 3. Metodo para buscar todas las vacantes registradas.
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void verTodas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {                
+        DbConnection conn = new DbConnection();
+        VacanteDao vacanteDao = new VacanteDao(conn);
+        List<Vacante> lista = vacanteDao.getAll();
+        conn.disconnect();
+        // Compartimos la variable lista, para poder accederla desde la vista
+        request.setAttribute("vacantes", lista);
+        RequestDispatcher rd;
+        rd = request.getRequestDispatcher("/vacantes.jsp");
+        rd.forward(request, response);
+    }
 
 }
