@@ -20,6 +20,13 @@
   	<servlet-name>BusquedaController</servlet-name>  	
   	<servlet-class>com.controller.BusquedaController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AdminController</display-name>
+  	<servlet-name>AdminController</servlet-name>
+  	<servlet-class>com.controller.AdminController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>VacanteController</servlet-name>
   	<url-pattern>/vacante</url-pattern>
@@ -31,5 +38,9 @@
   <servlet-mapping>
   	<servlet-name>BusquedaController</servlet-name>
   	<url-pattern>/buscar</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminController</servlet-name>
+  	<url-pattern>/admin</url-pattern>
   </servlet-mapping>
 </web-app>
