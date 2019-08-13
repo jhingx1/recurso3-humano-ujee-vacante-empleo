@@ -9,8 +9,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/justified-nav.css" rel="stylesheet">
-    <!--
+    
     <script src='tinymce/tinymce.min.js'></script>
+    
     <script>
 
       tinymce.init({
@@ -23,7 +24,7 @@
       });
 
     </script>
-    -->
+    
   </head>
 
   <body>
@@ -35,9 +36,9 @@
         <h3 class="text-muted">My Company - Administración</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="#">Crear Vacante</a></li>            
-            <li><a href="#">Vacantes</a></li>                        
-            <li><a href="#">Salir</a></li>            
+            <li><a href="admin?action=crear">Crear Vacante</a></li>          
+            <li><a href="vacante?action=lista">Vacantes</a></li>                        
+            <li><a href="admin?action=logout">Salir</a></li>            
           </ul>
         </nav>
       </div>
