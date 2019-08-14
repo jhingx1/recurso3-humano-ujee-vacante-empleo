@@ -26,9 +26,9 @@
         <h3 class="text-muted">My Company</h3>
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="homepage">Inicio</a></li>            
-            <li><a href="admin?action=login">Administración</a></li>                       
-            <li><a href="#">Acerca</a></li>            
+           <li><a href="homepage">Inicio</a></li>            
+            <li><a href="admin?action=login">Administración</a></li>                        
+            <li><a href="acerca.jsp">Acerca</a></li>              
           </ul>
         </nav>
       </div>
@@ -64,7 +64,7 @@
                   <td>
                     <a class="btn btn-default" href="vacante?action=ver&id=${vacante.id}" role="button">Ver Detalles</a>                                                    
                     <c:if test="${usuario.id > 0}"><!-- validando el login del usuario -->
-                    	<a class="btn btn-default" href="admin?action=eliminar?idVacante=${vacante.id}" role="button">Eliminar</a>
+                    	<a class="btn btn-default" href="admin?action=eliminar&idVacante=${vacante.id}" role="button">Eliminar</a>
 					</c:if>                                             
                   </td>  
                 </tr>      
