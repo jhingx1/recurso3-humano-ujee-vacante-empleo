@@ -63,7 +63,9 @@
                   <td>${vacante.fechaPublicacion}</td>
                   <td>
                     <a class="btn btn-default" href="vacante?action=ver&id=${vacante.id}" role="button">Ver Detalles</a>                                                    
-                    <a class="btn btn-default" href="#" role="button">Eliminar</a>                         
+                    <c:if test="${usuario.id > 0}"><!-- validando el login del usuario -->
+                    	<a class="btn btn-default" href="admin?action=eliminar?idVacante=${vacante.id}" role="button">Eliminar</a>
+					</c:if>                                             
                   </td>  
                 </tr>      
                           

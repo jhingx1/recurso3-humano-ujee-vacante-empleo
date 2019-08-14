@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dao.DbConnection;
 import com.dao.UsuarioDao;
+import com.dao.VacanteDao;
 import com.model.Usuario;
 
 /**
@@ -64,7 +65,7 @@ public class AdminController extends HttpServlet {
                     rd = request.getRequestDispatcher("/login.jsp");
                     rd.forward(request, response);
                 } else {
-                    //this.eliminarVacante(request, response);
+                	this.eliminarVacante(request, response);//this : solo es el contructuctor podemos barrarlo y reemplazarlo por new Admincontroller()
                 }
                 break;
             /* 
@@ -118,6 +119,32 @@ public class AdminController extends HttpServlet {
             rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
         }
+    }
+    
+    /**
+     * Metodo para eliminar una vacante.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
+    private void eliminarVacante(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Recibimos el id de la vacante que vamos a eliminar
+        int idVacanteParam = Integer.parseInt(request.getParameter("idVacante"));
+        DbConnection conn = new DbConnection();
+        VacanteDao vacanteDao = new VacanteDao(conn);
+        int respuesta = vacanteDao.delete(idVacanteParam);
+        String msg = "";
+        if (respuesta == 1) { // Fue afectado un registro, esto significa que si se borro
+            msg = "La vacante fue eliminada correctamente.";
+        } else {
+            msg = "Ocurrio un error. La vacante no fue eliminada.";
+        }
+        conn.disconnect();
+        request.setAttribute("message", msg);
+        RequestDispatcher rd;
+        rd = request.getRequestDispatcher("/mensaje.jsp");
+        rd.forward(request, response);
     }
 
 }

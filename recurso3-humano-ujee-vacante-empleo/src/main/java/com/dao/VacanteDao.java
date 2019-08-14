@@ -185,6 +185,25 @@ public class VacanteDao {
             return null;
         }
     }
+    
+    /**
+     * 6. Metodo para eliminar una vacante.
+     * @param idVacante
+     * @return No. de filas afectadas
+     */
+    public int delete(int idVacante) {
+        try {
+            String sql = "delete from Vacante where id=?";
+            PreparedStatement preparedStatement = conn.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, idVacante);
+            int rows = preparedStatement.executeUpdate();
+            return rows;
+
+        } catch (SQLException e) {            
+            System.out.println("Error VacanteDao.eliminar: " + e.getMessage());
+            return 0;
+        }
+    }
 	
 
 }
