@@ -29,7 +29,9 @@ public class VacanteController extends HttpServlet {
             this.verDetalle(request, response);
         } else if ("lista".equals(action)) {
             this.verTodas(request, response);
-        } 
+        } else if ("enviarCV".equals(action)) {
+            this.mostrarFormularioCV(request, response);
+        }
     }
 	
 	
@@ -97,7 +99,7 @@ public class VacanteController extends HttpServlet {
         
         // Recibimos id de la vacante a consultar
         int idVacante = Integer.parseInt(request.getParameter("id"));                
-        DbConnection conn = new DbConnection();
+        DbConnection conn = new DbConnection(); //conexion
         VacanteDao vacanteDao = new VacanteDao(conn);
         Vacante vacante = vacanteDao.getById(idVacante);
         conn.disconnect();        
@@ -128,6 +130,22 @@ public class VacanteController extends HttpServlet {
         request.setAttribute("vacantes", lista);
         RequestDispatcher rd;
         rd = request.getRequestDispatcher("/vacantes.jsp");
+        rd.forward(request, response);
+    }
+    
+    protected void mostrarFormularioCV(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
+        //para encontrar el id de la vacante
+    	int idVacante = Integer.parseInt(request.getParameter("id"));      
+        Vacante vacante = null;
+        DbConnection conn = new DbConnection();
+        VacanteDao vacanteDao = new VacanteDao(conn);
+        vacante = vacanteDao.getById(idVacante);
+        conn.disconnect();      
+        //Para ponerlo en la vista
+        request.setAttribute("vacante", vacante);
+        RequestDispatcher rd;
+        //enviando a la vista
+        rd = request.getRequestDispatcher("/frm_cv.jsp");
         rd.forward(request, response);
     }
 

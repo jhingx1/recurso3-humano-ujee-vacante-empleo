@@ -66,7 +66,7 @@
 	          <h2>${vacante.id}</h2>
 	          <p class="text-danger text-justify">${vacante.nombre}</p>
 	          <p class="text-justify">${vacante.descripcion}</p>
-	          <p><a class="btn btn-primary" href="vacante?action=ver&id=${vacante.id}" role="button">View details &raquo;</a></p>
+	          <p><a class="btn btn-primary" href="vacante?action=ver&id=${vacante.id}" role="button">Ver Ofertas &raquo;</a></p>
 	        </div>
       	      	
       	</c:forEach>

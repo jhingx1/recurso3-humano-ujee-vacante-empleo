@@ -31,11 +31,14 @@ public class BusquedaController extends HttpServlet {
         List<Vacante> lista = null;
         DbConnection conn = new DbConnection();
         // Con nuestro objeto DAO, hacemos la busqueda de vacantes del usaurio
+        //pasamos la conexion
         VacanteDao vacanteDao = new VacanteDao(conn);
+        
         lista = vacanteDao.getByQuery(q);
         conn.disconnect();
         RequestDispatcher rd;
         request.setAttribute("vacantes", lista);
+        //reenvio
         rd = request.getRequestDispatcher("/vacantes.jsp");
         rd.forward(request, response);
 	}

@@ -49,7 +49,15 @@
           <b>Descripción:</b><br>
           <p class="text-justify">${vacante.descripcion}</p>
           <b>Detalles de la vacante</b>:<br>
-          ${vacante.detalle}
+          ${vacante.detalle}<br>
+           <!--
+          Mostramos un boton para permitir a un usuario enviar su Curriculm Vitae para esta Vacante. Estamos mandando 
+          como parametro el id de esta vacante, ya que lo ocuparemos para hacer una busqueda para mostrar el nombre
+          de la vacante en el siguiente formulario que es el formulario para enviar los datos del usuario, junto con su
+          archivo DOC o PDF de su CV.
+          -->          
+          <p><a class="btn btn-default btn-success" title="Enviar Curriculm Vitae para aplicar a esta vacante." 
+          	href="vacante?action=enviarCV&id=${vacante.id}" role="button">Enviar CV</a></p>
         </div>
       </div>      
       <!-- Site footer -->

@@ -30,6 +30,26 @@
   	<servlet-name>AdminController</servlet-name>
   	<servlet-class>com.controller.AdminController</servlet-class>
   </servlet>
+  <servlet>
+      <servlet-name>SolicitudController</servlet-name>
+      <servlet-class>com.controller.SolicitudController</servlet-class>
+      <!-- https://docs.oracle.com/javaee/6/tutorial/doc/gmhal.html -->
+      <multipart-config>
+      		<!-- Se debe de crear la carpeta para que funcione -->
+          <location>C:\tmp</location>   <!--  <location>/tmp</location>  en linux-->
+          <!-- Tamanio maximo del archivo a subir-->
+          <max-file-size>3145728</max-file-size>
+          <max-request-size>418018841</max-request-size>
+          <file-size-threshold>1048576</file-size-threshold>
+      </multipart-config>
+  </servlet>
+  
+  <servlet>
+      <servlet-name>EmailController</servlet-name>
+      <servlet-class>com.controller.EmailController</servlet-class>
+  </servlet>
+  
+  
   <servlet-mapping>
   	<servlet-name>VacanteController</servlet-name>
   	<url-pattern>/vacante</url-pattern>
@@ -46,4 +66,17 @@
   	<servlet-name>AdminController</servlet-name>
   	<url-pattern>/admin</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>SolicitudController</servlet-name>
+      <url-pattern>/solicitud</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+      <servlet-name>EmailController</servlet-name>
+      <url-pattern>/email</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>
+			30
+	</session-timeout>
+   </session-config>
 </web-app>
