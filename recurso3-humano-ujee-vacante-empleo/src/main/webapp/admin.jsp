@@ -27,7 +27,8 @@
         <nav>
           <ul class="nav nav-justified">
             <li><a href="admin?action=crear">Crear Vacante</a></li>            
-            <li><a href="vacante?action=lista">Vacantes</a></li>                           
+            <li><a href="vacante?action=lista">Vacantes</a></li>
+            <li><a href="solicitud?action=solicitudes">Solicitudes</a></li>                         
             <li><a href="admin?action=logout">Salir</a></li>            
           </ul>
         </nav>

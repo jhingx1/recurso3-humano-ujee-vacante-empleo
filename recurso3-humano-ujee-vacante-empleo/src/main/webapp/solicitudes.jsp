@@ -65,7 +65,8 @@
                     <center>   
                       <!-- Mostramos un link para el archivo del CV que subio el usuario. El nombre del archivo lo tenemos
                       guadado en el campo archivo de la tabla solicitud y estan almacenados en la carpeta uploads en nuestro
-                      directorio raiz de nuestra aplicacion.
+                      directorio raiz de nuestra aplicacion. Esta ruta apunta directamente a la ruta del servidor no
+                      al de la aplicaccion-construccion
                       -->
                       <a href="uploads/${solicitud.archivo}" target="_blank">
                         <img src="images/download.png" title="Descargar Curriculum Vitae">

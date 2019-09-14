@@ -205,7 +205,7 @@ public class SolicitudController extends HttpServlet {
         rd.forward(request, response);
     }
 
-    //Mi metodo
+    //Mi metodo : para sacar el nombre del archivo cargado
     private String getFileName(final Part part) {
         for (String content : part.getHeader("content-disposition").split(";")) {
             if (content.trim().startsWith("filename")) {
